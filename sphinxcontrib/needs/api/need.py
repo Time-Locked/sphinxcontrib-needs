@@ -132,6 +132,7 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
     print ("create need: ", need_id, id)
     # Calculate target id, to be able to set a link back
     target_node = nodes.target('', '', ids=[need_id])
+    print (target_node)
 
     # Removed 0.5.0
     # if collapse is None:

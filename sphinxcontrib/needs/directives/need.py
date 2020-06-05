@@ -295,8 +295,6 @@ def process_need_nodes(app, doctree, fromdocname):
 
     needs = env.needs_all_needs
     
-    print ("needs: ", needs)
-
     # Call dynamic functions and replace related note data with their return values
     resolve_dynamic_values(env)
 
@@ -308,19 +306,9 @@ def process_need_nodes(app, doctree, fromdocname):
         print("node_need ", node_need)
         print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        def findId():
-            if len(node_need.attributes["ids"]):
-                return node_need.attributes["ids"][0] 
-            
-            # Get all field lists in the document.
-            field_lists = node_need.findall('field_list')
-
-            fields = [f for field_list in field_lists for f in field_list.findall('field')]
-            
-            print("need_id: ", fields["id"])
-            return fields["id"]
         
-        need_data = needs[findId()]
+        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else "noid"
+        need_data = needs[need_id]
         
         
         find_and_replace_node_content(node_need, env, need_data)

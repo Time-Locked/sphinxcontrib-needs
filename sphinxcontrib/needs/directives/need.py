@@ -104,6 +104,8 @@ class NeedDirective(Directive):
         else:
             collapse = getattr(env.app.config, "needs_collapse_details", None)
 
+        print ("options: ",self.options)
+            
         hide = True if "hide" in self.options.keys() else False
 
         id = self.options.get("id", None)
@@ -304,7 +306,7 @@ def process_need_nodes(app, doctree, fromdocname):
         print("node_need ", node_need)
         print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_id = node_need.attributes["ids"][0] if isinstance(node_need.attributes["ids"], list) else node_need.attributes["ids"]
+        need_id = node_need.attributes["ids"][0] if isinstance(node_need.attributes["ids"], list) else "noid"
         print("need_id: ", need_id)
         need_data = needs[need_id]
 

@@ -104,7 +104,7 @@ class NeedDirective(Directive):
         else:
             collapse = getattr(env.app.config, "needs_collapse_details", None)
 
-        print ("options: ",self.options)
+        #print ("options: ",self.options)
             
         hide = True if "hide" in self.options.keys() else False
 
@@ -294,6 +294,8 @@ def process_need_nodes(app, doctree, fromdocname):
         return
 
     needs = env.needs_all_needs
+    
+    print ("needs: ", needs)
 
     # Call dynamic functions and replace related note data with their return values
     resolve_dynamic_values(env)
@@ -306,10 +308,21 @@ def process_need_nodes(app, doctree, fromdocname):
         print("node_need ", node_need)
         print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_id = node_need.attributes["ids"][0] if isinstance(node_need.attributes["ids"], list) else "noid"
-        print("need_id: ", need_id)
-        need_data = needs[need_id]
+        def findId():
+            if length(node_need.attributes["ids"]):
+                return node_need.attributes["ids"][0] 
+            
+            # Get all field lists in the document.
+            field_lists = node_need.findall('field_list')
 
+            fields = [f for field_list in field_lists for f in field_list.findall('field')]
+            
+            print("need_id: ", fields["id"])
+            return fields["id"]
+        
+        need_data = needs[findId()]
+        
+        
         find_and_replace_node_content(node_need, env, need_data)
         for index, attribute in enumerate(node_need.attributes['classes']):
             node_need.attributes['classes'][index] = check_and_get_content(attribute, need_data, env)

@@ -301,10 +301,10 @@ def process_need_nodes(app, doctree, fromdocname):
         create_back_links(env, links['option'])
 
     for node_need in doctree.traverse(Need):
-        print(node_need.attributes["ids"])
+        print("node_need.attributes['ids']", node_need.attributes["ids"])
         
         need_id = node_need.attributes["ids"][0] if isinstance(node_need.attributes["ids"], list) else node_need.attributes["ids"]
-        print(need_id)
+        print("need_id: ", need_id)
         need_data = needs[need_id]
 
         find_and_replace_node_content(node_need, env, need_data)

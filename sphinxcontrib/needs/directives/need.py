@@ -49,6 +49,7 @@ class Need(nodes.General, nodes.Element):
     headline and content container get added later during event handling (process_need_nodes()).
     """
     child_text_separator = "\n"
+    print ("Need: ", self)
     pass
 
 

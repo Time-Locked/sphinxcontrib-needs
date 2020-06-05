@@ -319,7 +319,8 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
     node_need += node_need_content.children
 
     needs_info['content_node'] = node_need
-    print("needs_info: ", needs_info)
+    print("target_node: ", target_node)
+    print("node_need: ", node_need)
     #needs_info['content_node']['id'] = need_id
 
     return_nodes = [target_node] + [node_need]

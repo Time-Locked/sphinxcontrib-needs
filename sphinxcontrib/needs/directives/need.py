@@ -12,7 +12,7 @@ from pkg_resources import parse_version
 import sphinx
 from sphinx.util.nodes import make_refnode
 
-from sphinxcontrib.needs.api import add_need
+from sphinxcontrib.needs.api import add_need, make_hashed_id
 
 from sphinxcontrib.needs.roles.need_incoming import Need_incoming
 from sphinxcontrib.needs.roles.need_outgoing import Need_outgoing
@@ -130,11 +130,14 @@ class NeedDirective(Directive):
         for extra_option in env.config.needs_extra_options.keys():
             need_extra_options[extra_option] = self.options.get(extra_option, '')
 
-        return add_need(env.app, self.state, self.docname, self.lineno,
+        an = add_need(env.app, self.state, self.docname, self.lineno,
                         need_type=self.name, title=self.trimmed_title, id=id, content=content,
                         status=status, tags=tags,
                         hide=hide, template=template, pre_template=pre_template, post_template=post_template,
                         collapse=collapse, style=style, layout=layout, **need_extra_options)
+        
+        print (an)
+        return an
 
     def read_in_links(self, name):
         # Get links
@@ -303,10 +306,11 @@ def process_need_nodes(app, doctree, fromdocname):
         create_back_links(env, links['option'])
 
     for node_need in doctree.traverse(Need):
-        #print("node_need ", node_need)
+        print("node_need ", node_need)
         #print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_data = needs[node_need.attributes["ids"][0]] if len(node_need.attributes["ids"]) > 0 else None
+        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else None # make_hashed_id(app, need_type, title, content)
+        need_data = needs[need_id] 
         
         
         find_and_replace_node_content(node_need, env, need_data)

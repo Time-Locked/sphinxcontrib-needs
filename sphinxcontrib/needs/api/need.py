@@ -129,6 +129,7 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
         raise NeedsInvalidException("Given ID '{id}' does not match configured regex '{regex}'".format(
             id=need_id, regex=env.app.config.needs_id_regex))
 
+    print ("create need: ", need_id, id)
     # Calculate target id, to be able to set a link back
     target_node = nodes.target('', '', ids=[need_id])
 

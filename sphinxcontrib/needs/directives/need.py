@@ -303,12 +303,10 @@ def process_need_nodes(app, doctree, fromdocname):
         create_back_links(env, links['option'])
 
     for node_need in doctree.traverse(Need):
-        print("node_need ", node_need)
-        print("node_need.attributes['ids'] ", node_need.attributes["ids"])
+        #print("node_need ", node_need)
+        #print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        
-        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else "noid"
-        need_data = needs[need_id]
+        need_data = needs[node_need.attributes["ids"][0]] if len(node_need.attributes["ids"]) > 0 else None
         
         
         find_and_replace_node_content(node_need, env, need_data)

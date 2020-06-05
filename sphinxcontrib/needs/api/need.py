@@ -224,6 +224,7 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
         'is_part': False,
         'is_need': True
     }
+    print (needs_info)
     needs_extra_options = env.config.needs_extra_options.keys()
     _merge_extra_options(needs_info, kwargs, needs_extra_options)
 
@@ -332,6 +333,7 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
         post_container += node_need_post_content.children
         return_nodes = return_nodes + [post_container]
 
+    print("return_nodes: ", return_nodes)
     return return_nodes
 
 

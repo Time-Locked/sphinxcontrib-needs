@@ -309,7 +309,7 @@ def process_need_nodes(app, doctree, fromdocname):
         print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
         def findId():
-            if length(node_need.attributes["ids"]):
+            if len(node_need.attributes["ids"]):
                 return node_need.attributes["ids"][0] 
             
             # Get all field lists in the document.

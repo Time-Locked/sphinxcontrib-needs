@@ -298,6 +298,8 @@ def process_need_nodes(app, doctree, fromdocname):
 
     needs = env.needs_all_needs
     
+    #print (needs)
+    
     # Call dynamic functions and replace related note data with their return values
     resolve_dynamic_values(env)
 
@@ -306,10 +308,10 @@ def process_need_nodes(app, doctree, fromdocname):
         create_back_links(env, links['option'])
 
     for node_need in doctree.traverse(Need):
-        print("node_need ", node_need)
-        print("node_need.attributes['ids'] ", node_need.attributes["ids"])
+        #print("node_need ", node_need)
+        #print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else make_hashed_id(app, need_type, title, content)
+        need_id = node_need.attributes["ids"][0]
         need_data = needs[need_id] 
         
         

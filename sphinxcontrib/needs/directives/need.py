@@ -309,7 +309,7 @@ def process_need_nodes(app, doctree, fromdocname):
         print("node_need ", node_need)
         print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_id = node_need.attributes["ids"][0]
+        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else make_hashed_id(app, need_type, title, content)
         need_data = needs[need_id] 
         
         

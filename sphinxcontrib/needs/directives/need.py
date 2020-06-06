@@ -49,7 +49,6 @@ class Need(nodes.General, nodes.Element):
     headline and content container get added later during event handling (process_need_nodes()).
     """
     child_text_separator = "\n"
-    print ("Need: ", self)
     pass
 
 
@@ -308,9 +307,9 @@ def process_need_nodes(app, doctree, fromdocname):
 
     for node_need in doctree.traverse(Need):
         print("node_need ", node_need)
-        #print("node_need.attributes['ids'] ", node_need.attributes["ids"])
+        print("node_need.attributes['ids'] ", node_need.attributes["ids"])
         
-        need_id = node_need.attributes["ids"][0] if len(node_need.attributes["ids"]) > 0 else None # make_hashed_id(app, need_type, title, content)
+        need_id = node_need.attributes["ids"][0]
         need_data = needs[need_id] 
         
         

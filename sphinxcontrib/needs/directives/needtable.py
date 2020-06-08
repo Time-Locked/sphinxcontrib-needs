@@ -80,7 +80,7 @@ class NeedtableDirective(FilterBase):
         }
         env.need_all_needtables[targetid].update(self.collect_filter_attributes())
 
-        return [targetnode] + [Needtable('')]
+        return [targetnode] + [Needtable('', ids=[targetid])]
 
 
 def process_needtables(app, doctree, fromdocname):

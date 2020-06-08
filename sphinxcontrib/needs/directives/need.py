@@ -136,7 +136,7 @@ class NeedDirective(Directive):
                         hide=hide, template=template, pre_template=pre_template, post_template=post_template,
                         collapse=collapse, style=style, layout=layout, **need_extra_options)
         
-        print (an)
+        #print (an)
         return an
 
     def read_in_links(self, name):

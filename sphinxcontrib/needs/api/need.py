@@ -129,10 +129,10 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
         raise NeedsInvalidException("Given ID '{id}' does not match configured regex '{regex}'".format(
             id=need_id, regex=env.app.config.needs_id_regex))
 
-    print ("create need: ", need_id, id)
+    #print ("create need: ", need_id, id)
     # Calculate target id, to be able to set a link back
     target_node = nodes.target('', '', ids=[need_id])
-    print (target_node)
+    #print (target_node)
 
     # Removed 0.5.0
     # if collapse is None:
@@ -319,8 +319,8 @@ def add_need(app, state, docname, lineno, need_type, title, id=None, content="",
     node_need += node_need_content.children
 
     needs_info['content_node'] = node_need
-    print("target_node: ", target_node)
-    print("node_need: ", node_need)
+    #print("target_node: ", target_node)
+    #print("node_need: ", node_need)
     #needs_info['content_node']['id'] = need_id
 
     return_nodes = [target_node] + [node_need]

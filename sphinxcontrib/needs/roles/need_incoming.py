@@ -51,10 +51,13 @@ def process_need_incoming(app, doctree, fromdocname):
                     #     link_text += ", "
                     node_need_backref[0] = nodes.Text(link_text, link_text)
 
+                    id = target_need['target_node']['refid'] if target_need['target_node']['refid'] is not None else target_need['target_node']['ids'][0],
+                    print (id)
+                        
                     new_node_ref = make_refnode(app.builder,
                                                 fromdocname,
                                                 target_need['docname'],
-                                                target_need['target_node']['refid'] if target_need['target_node']['refid'] is not None else target_need['target_node']['ids'][0],
+                                                id,
                                                 node_need_backref[0].deepcopy(),
                                                 node_need_backref['reftarget'])
 

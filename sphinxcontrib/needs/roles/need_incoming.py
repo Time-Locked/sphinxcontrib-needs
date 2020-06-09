@@ -51,9 +51,10 @@ def process_need_incoming(app, doctree, fromdocname):
                     #     link_text += ", "
                     node_need_backref[0] = nodes.Text(link_text, link_text)
 
+                    target_node = target_need['target_node']
                     
-                    id = target_need['target_node']['refid'] if 'refid' in target_need['target_node'].keys() else target_need['target_node']['ids'][0],
-                    print (id)
+                    id = target_node['refid'] if target_node.hasattr('refid') else target_node['ids'][0]
+                    print("id: ", id)
                         
                     new_node_ref = make_refnode(app.builder,
                                                 fromdocname,

@@ -34,6 +34,7 @@ def process_need_incoming(app, doctree, fromdocname):
             links_back = ref_need["links_back"]
 
         for index, back_link in enumerate(links_back):
+            print (back_link)
             # If need back_link target exists, let's create the reference
             if back_link in env.needs_all_needs:
                 try:

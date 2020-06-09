@@ -39,7 +39,7 @@ def process_need_incoming(app, doctree, fromdocname):
             if back_link in env.needs_all_needs:
                 try:
                     target_need = env.needs_all_needs[back_link]
-                    print (target_need)
+                    print (target_need['target_node'])
                     if getattr(env.config, "needs_show_link_title", False) is True:
                         link_text = "{title} ({id})".format(title=target_need["title"], id=target_need["id"])
                     else:
@@ -59,6 +59,7 @@ def process_need_incoming(app, doctree, fromdocname):
                                                 node_need_backref['reftarget'])
 
                     print (new_node_ref)
+                    
                     node_link_container += new_node_ref
 
                     # If we have several links, we add an empty text between them

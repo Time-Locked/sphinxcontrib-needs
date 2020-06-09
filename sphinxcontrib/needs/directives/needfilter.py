@@ -72,7 +72,7 @@ class NeedfilterDirective(FilterBase):
         }
         env.need_all_needfilters[targetid].update(self.collect_filter_attributes())
 
-        return [targetnode] + [Needfilter('')]
+        return [targetnode] + [Needfilter('', ids=[targetid])]
 
 
 def process_needfilters(app, doctree, fromdocname):

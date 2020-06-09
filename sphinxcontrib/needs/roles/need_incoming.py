@@ -39,7 +39,7 @@ def process_need_incoming(app, doctree, fromdocname):
             if back_link in env.needs_all_needs:
                 try:
                     target_need = env.needs_all_needs[back_link]
-                    print (target_need['target_node'])
+                    print (target_need['target_node'], target_need['target_node']['refid'])
                     if getattr(env.config, "needs_show_link_title", False) is True:
                         link_text = "{title} ({id})".format(title=target_need["title"], id=target_need["id"])
                     else:
@@ -54,7 +54,7 @@ def process_need_incoming(app, doctree, fromdocname):
                     new_node_ref = make_refnode(app.builder,
                                                 fromdocname,
                                                 target_need['docname'],
-                                                target_need['target_node']['refid'],
+                                                target_need['target_node']['refid'] if target_need['target_node']['refid'] is not None else target_need['target_node']['ids'][0],
                                                 node_need_backref[0].deepcopy(),
                                                 node_need_backref['reftarget'])
 

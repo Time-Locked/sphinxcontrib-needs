@@ -34,12 +34,12 @@ def process_need_incoming(app, doctree, fromdocname):
             links_back = ref_need["links_back"]
 
         for index, back_link in enumerate(links_back):
-            print (back_link)
+            #print (back_link)
             # If need back_link target exists, let's create the reference
             if back_link in env.needs_all_needs:
                 try:
                     target_need = env.needs_all_needs[back_link]
-                    print (target_need, target_need['target_node'])
+                    #print (target_need, target_need['target_node'])
                     if getattr(env.config, "needs_show_link_title", False) is True:
                         link_text = "{title} ({id})".format(title=target_need["title"], id=target_need["id"])
                     else:
@@ -52,9 +52,8 @@ def process_need_incoming(app, doctree, fromdocname):
                     node_need_backref[0] = nodes.Text(link_text, link_text)
 
                     target_node = target_need['target_node']
-                    
                     id = target_node['refid'] if target_node.hasattr('refid') else target_node['ids'][0]
-                    print("id: ", id)
+                    #print("id: ", id)
                         
                     new_node_ref = make_refnode(app.builder,
                                                 fromdocname,

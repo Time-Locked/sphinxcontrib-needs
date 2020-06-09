@@ -51,7 +51,8 @@ def process_need_incoming(app, doctree, fromdocname):
                     #     link_text += ", "
                     node_need_backref[0] = nodes.Text(link_text, link_text)
 
-                    id = target_need['target_node']['refid'] if target_need['target_node']['refid'] is not None else target_need['target_node']['ids'][0],
+                    
+                    id = target_need['target_node']['refid'] if 'refid' in target_need['target_node'].keys() else target_need['target_node']['ids'][0],
                     print (id)
                         
                     new_node_ref = make_refnode(app.builder,
@@ -71,6 +72,7 @@ def process_need_incoming(app, doctree, fromdocname):
 
                 except Exception:
                     # Irf the given need id can not be found, we must pass here....
+                    print ("exception!!!")
                     pass
 
             else:

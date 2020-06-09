@@ -39,6 +39,7 @@ def process_need_incoming(app, doctree, fromdocname):
             if back_link in env.needs_all_needs:
                 try:
                     target_need = env.needs_all_needs[back_link]
+                    print (target_need)
                     if getattr(env.config, "needs_show_link_title", False) is True:
                         link_text = "{title} ({id})".format(title=target_need["title"], id=target_need["id"])
                     else:

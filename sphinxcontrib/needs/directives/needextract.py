@@ -61,7 +61,7 @@ class NeedextractDirective(FilterBase):
         }
         env.need_all_needextracts[targetid].update(self.collect_filter_attributes())
 
-        return [targetnode] + [Needextract('')]
+        return [targetnode] + [Needextract('', ids=[targetid])]
 
 
 def process_needextract(app, doctree, fromdocname):

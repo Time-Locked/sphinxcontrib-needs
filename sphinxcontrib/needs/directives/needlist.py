@@ -106,6 +106,7 @@ def process_needlist(app, doctree, fromdocname):
 
             # Create a reference
             if not need_info["hide"]:
+                print (need_info['target_node'])
                 ref = nodes.reference('', '')
                 ref['refdocname'] = need_info['docname']
                 ref['refuri'] = app.builder.get_relative_uri(
